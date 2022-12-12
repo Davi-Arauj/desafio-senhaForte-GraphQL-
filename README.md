@@ -32,7 +32,11 @@ Exemplo de variaveis:
         
         go run server.go
 
-
+### Rotas disponíveis:
+    * localhost:8080/
+        - Irá chamar o playground do GraphQL para acessar o back
+    * localhost:8080/graphql
+        - Irá chamar diretamente o back através de alguma ferramente de acesso(Postman,Insomnia)
 ### Skils
  * Golang 1.19.3
  * GraphQL
