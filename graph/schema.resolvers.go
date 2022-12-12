@@ -7,22 +7,24 @@ package graph
 import (
 	"context"
 
-	"github.com/testeAleatorio/domain"
-	"github.com/testeAleatorio/graph/model"
+	"github.com/desafio-senhaForte-GraphQL/domain"
+	"github.com/desafio-senhaForte-GraphQL/graph/model"
 )
 
 // Verify is the resolver for the verify field.
 func (r *queryResolver) Verify(ctx context.Context, senhaInput *model.SenhaInput) (*model.Result, error) {
-	var senha model.SenhaInput
-	var senhaResult model.Result
-	var err error
+	var (
+		senha       model.SenhaInput
+		senhaResult model.Result
+		err         error
+	)
 
 	senha.Password = senhaInput.Password
 	senha.Rules = append(senha.Rules, senhaInput.Rules...)
 
 	senhaResult.Verify, senhaResult.NoMatch, err = domain.ValidaSenha(senha)
 	if err != nil {
-		panic("erro ao validar SENHA")
+		panic("erro ao validar senha")
 	}
 
 	return &senhaResult, nil

@@ -1,6 +1,6 @@
 input SenhaInput{
   password: String!
-  rules: [Rule]!
+  rules: [Rule]
 }
 
 input Rule{

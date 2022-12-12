@@ -13,7 +13,7 @@ import (
 
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
-	"github.com/testeAleatorio/graph/model"
+	"github.com/desafio-senhaForte-GraphQL/graph/model"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -193,7 +193,7 @@ func (ec *executionContext) field_Query_verify_args(ctx context.Context, rawArgs
 	var arg0 *model.SenhaInput
 	if tmp, ok := rawArgs["senhaInput"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("senhaInput"))
-		arg0, err = ec.unmarshalOSenhaInput2ᚖgithubᚗcomᚋtesteAleatorioᚋgraphᚋmodelᚐSenhaInput(ctx, tmp)
+		arg0, err = ec.unmarshalOSenhaInput2ᚖgithubᚗcomᚋdesafioᚑsenhaForteᚑGraphQLᚋgraphᚋmodelᚐSenhaInput(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -265,7 +265,7 @@ func (ec *executionContext) _Query_verify(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.(*model.Result)
 	fc.Result = res
-	return ec.marshalOResult2ᚖgithubᚗcomᚋtesteAleatorioᚋgraphᚋmodelᚐResult(ctx, field.Selections, res)
+	return ec.marshalOResult2ᚖgithubᚗcomᚋdesafioᚑsenhaForteᚑGraphQLᚋgraphᚋmodelᚐResult(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_verify(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -2344,7 +2344,7 @@ func (ec *executionContext) unmarshalInputSenhaInput(ctx context.Context, obj in
 			var err error
 
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("rules"))
-			it.Rules, err = ec.unmarshalNRule2ᚕᚖgithubᚗcomᚋtesteAleatorioᚋgraphᚋmodelᚐRule(ctx, v)
+			it.Rules, err = ec.unmarshalORule2ᚕᚖgithubᚗcomᚋdesafioᚑsenhaForteᚑGraphQLᚋgraphᚋmodelᚐRule(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -2801,23 +2801,6 @@ func (ec *executionContext) marshalNInt2int(ctx context.Context, sel ast.Selecti
 	return res
 }
 
-func (ec *executionContext) unmarshalNRule2ᚕᚖgithubᚗcomᚋtesteAleatorioᚋgraphᚋmodelᚐRule(ctx context.Context, v interface{}) ([]*model.Rule, error) {
-	var vSlice []interface{}
-	if v != nil {
-		vSlice = graphql.CoerceList(v)
-	}
-	var err error
-	res := make([]*model.Rule, len(vSlice))
-	for i := range vSlice {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalORule2ᚖgithubᚗcomᚋtesteAleatorioᚋgraphᚋmodelᚐRule(ctx, vSlice[i])
-		if err != nil {
-			return nil, err
-		}
-	}
-	return res, nil
-}
-
 func (ec *executionContext) unmarshalNString2string(ctx context.Context, v interface{}) (string, error) {
 	res, err := graphql.UnmarshalString(v)
 	return res, graphql.ErrorOnPath(ctx, err)
@@ -3112,14 +3095,34 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 	return res
 }
 
-func (ec *executionContext) marshalOResult2ᚖgithubᚗcomᚋtesteAleatorioᚋgraphᚋmodelᚐResult(ctx context.Context, sel ast.SelectionSet, v *model.Result) graphql.Marshaler {
+func (ec *executionContext) marshalOResult2ᚖgithubᚗcomᚋdesafioᚑsenhaForteᚑGraphQLᚋgraphᚋmodelᚐResult(ctx context.Context, sel ast.SelectionSet, v *model.Result) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Result(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalORule2ᚖgithubᚗcomᚋtesteAleatorioᚋgraphᚋmodelᚐRule(ctx context.Context, v interface{}) (*model.Rule, error) {
+func (ec *executionContext) unmarshalORule2ᚕᚖgithubᚗcomᚋdesafioᚑsenhaForteᚑGraphQLᚋgraphᚋmodelᚐRule(ctx context.Context, v interface{}) ([]*model.Rule, error) {
+	if v == nil {
+		return nil, nil
+	}
+	var vSlice []interface{}
+	if v != nil {
+		vSlice = graphql.CoerceList(v)
+	}
+	var err error
+	res := make([]*model.Rule, len(vSlice))
+	for i := range vSlice {
+		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
+		res[i], err = ec.unmarshalORule2ᚖgithubᚗcomᚋdesafioᚑsenhaForteᚑGraphQLᚋgraphᚋmodelᚐRule(ctx, vSlice[i])
+		if err != nil {
+			return nil, err
+		}
+	}
+	return res, nil
+}
+
+func (ec *executionContext) unmarshalORule2ᚖgithubᚗcomᚋdesafioᚑsenhaForteᚑGraphQLᚋgraphᚋmodelᚐRule(ctx context.Context, v interface{}) (*model.Rule, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -3127,7 +3130,7 @@ func (ec *executionContext) unmarshalORule2ᚖgithubᚗcomᚋtesteAleatorioᚋgr
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalOSenhaInput2ᚖgithubᚗcomᚋtesteAleatorioᚋgraphᚋmodelᚐSenhaInput(ctx context.Context, v interface{}) (*model.SenhaInput, error) {
+func (ec *executionContext) unmarshalOSenhaInput2ᚖgithubᚗcomᚋdesafioᚑsenhaForteᚑGraphQLᚋgraphᚋmodelᚐSenhaInput(ctx context.Context, v interface{}) (*model.SenhaInput, error) {
 	if v == nil {
 		return nil, nil
 	}
