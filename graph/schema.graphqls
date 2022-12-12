@@ -1,0 +1,18 @@
+input SenhaInput{
+  password: String!
+  rules: [Rule]!
+}
+
+input Rule{
+  rule: String!
+  value: Int!
+}
+
+type Result{
+  verify: Boolean
+  noMatch: [String]
+}
+
+type Query {
+  verify(senhaInput: SenhaInput): Result
+}
