@@ -8,6 +8,7 @@ import (
 	"github.com/desafio-senhaForte-GraphQL/graph/model"
 )
 
+// ValidaSenha - irá validar uma senha de acordo com as regras passadas
 func ValidaSenha(senha model.SenhaInput) (*bool, []*string, error) {
 
 	rules := []*string{}
